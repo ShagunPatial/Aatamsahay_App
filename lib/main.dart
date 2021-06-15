@@ -5,8 +5,11 @@ import 'package:atamsahay/select_symptomps.dart';
 import './main_drawer.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import './screens/loginpage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     title: "Aatmsahay",
     theme: ThemeData.dark(),

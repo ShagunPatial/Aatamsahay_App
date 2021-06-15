@@ -1,6 +1,8 @@
 import 'package:atamsahay/main.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'signup_login.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -40,7 +42,7 @@ class MyHomePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 160, left: 30),
                   child: Text(
-                    "Create your account",
+                    "Welcome",
                     style: GoogleFonts.raleway(
                         fontSize: 35,
                         color: Colors.black,
@@ -48,197 +50,100 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 300),
+                  padding: EdgeInsets.only(top: 400),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.teal,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(60),
                             topRight: Radius.circular(60))),
                     width: double.infinity,
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Center(
-                            child: Text(
-                              "Sign Up",
-                              style: GoogleFonts.mukta(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Color(0xffedffee),
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                labelText: "Email",
-                                labelStyle: GoogleFonts.mukta(
-                                    color: Color(0xff29d65a).withOpacity(0.7),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17)),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Color(0xffedffee),
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                labelText: "Password",
-                                labelStyle: GoogleFonts.mukta(
-                                    color: Color(0xff29d65a).withOpacity(0.7),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17),
-                                suffixIcon: Icon(
-                                  Icons.remove_red_eye,
-                                  color: Color(0xff29d65a).withOpacity(0.4),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.only(top: 10, left: 20),
+                                child: Text(
+                                  "Sign Up",
+                                  style: GoogleFonts.raleway(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 )),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Color(0xffedffee),
-                                border: UnderlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                labelText: "Confirm Password",
-                                labelStyle: GoogleFonts.mukta(
-                                    color: Color(0xff29d65a).withOpacity(0.7),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17)),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Center(
-                            child: FlatButton(
-                              onPressed: null,
-                              child: Material(
-                                elevation: 10,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(
-                                  width: 180,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0xff29d65a),
-                                          Color(0xff54d94a)
-                                        ],
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                    child: Text(
-                                      "Sign Up",
-                                      style: GoogleFonts.mukta(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 21),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            SizedBox(
+                              height: 30,
                             ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Divider(
-                                  height: 20,
-                                  thickness: 2,
-                                  indent: 30,
-                                  color: Colors.black38,
-                                ),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                onPrimary: Colors.black,
+                                minimumSize: Size(double.infinity, 50),
                               ),
-                              Text(
-                                " Or sign in with ",
-                                style: GoogleFonts.mukta(color: Colors.black),
+                              icon: FaIcon(Icons.email, color: Colors.grey),
+                              label: Text('  Sign Up with Email'),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return Signup();
+                                }));
+                              },
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                onPrimary: Colors.black,
+                                minimumSize: Size(double.infinity, 50),
                               ),
-                              Expanded(
-                                child: Divider(
-                                  height: 20,
-                                  thickness: 2,
-                                  endIndent: 30,
-                                  color: Colors.black38,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Material(
-                                elevation: 10,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Image.network(
-                                    'https://i.postimg.cc/6qMTfNpM/google-symbol.png',
-                                    height: 25,
-                                    width: 25,
+                              icon: FaIcon(FontAwesomeIcons.google,
+                                  color: Colors.red),
+                              label: Text('  Sign Up with Google'),
+                              onPressed: () {},
+                            ),
+                            Padding(
+                                padding: EdgeInsets.only(top: 10, left: 20),
+                                child: Text(
+                                  "---- or, Login ----",
+                                  style: GoogleFonts.raleway(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
+                                )),
+                            SizedBox(height: 20),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                onPrimary: Colors.black,
+                                minimumSize: Size(double.infinity, 50),
+                              ),
+                              icon: FaIcon(Icons.email, color: Colors.blue),
+                              label: Text('  Login with Email'),
+                              onPressed: () {},
+                            ),
+                            SizedBox(height: 10),
+                            ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.black,
+                                  onPrimary: Colors.white,
+                                  minimumSize: Size(10, 30),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Material(
-                                elevation: 10,
-                                borderRadius: BorderRadius.circular(10),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Image.network(
-                                    'https://i.postimg.cc/wT9GtYNS/twitter-4.png',
-                                    height: 25,
-                                    width: 25,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Material(
-                                  elevation: 10,
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: IconButton(
-                                          icon: const Icon(
-                                              Icons.smart_button_sharp),
-                                          onPressed: () {
-                                            Navigator.push(context,
-                                                MaterialPageRoute(
-                                                    builder: (context) {
-                                              return HomePage();
-                                            }));
-                                          })))
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                                icon:
+                                    FaIcon(Icons.forward, color: Colors.white),
+                                label: Text(' SKIP'),
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return HomePage();
+                                  }));
+                                })
+                          ],
+                        )),
                   ),
                 )
               ],
