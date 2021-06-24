@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:dropdownfield/dropdownfield.dart';
 import './processing.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class select_symptomps extends StatefulWidget {
   @override
@@ -158,25 +159,30 @@ class _symptompsState extends State<select_symptomps> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-                title: Text("Select Symptomps"), backgroundColor: Colors.teal),
+                title: Text("Select Symptoms"), backgroundColor: Colors.teal),
             body: SingleChildScrollView(
               child: Container(
                   color: Colors.white10,
                   child: Column(
                     children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         //color: Colors.te,
                         decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(60.0)),
                             gradient: LinearGradient(colors: <Color>[
-                          Colors.teal,
-                          Colors.black,
-                          Colors.teal,
-                        ])),
+                              Colors.teal[800],
+                              Colors.teal[500],
+                              Colors.teal[800],
+                            ])),
                         alignment: Alignment.center,
-                        padding: const EdgeInsets.fromLTRB(15, 30, 10, 0),
-                        height: 100,
-                        width: 500,
-                        child: Text(" Select Symptomps that your body shows",
+                        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        height: 50,
+                        width: 400,
+                        child: Text(" Select Symptoms that your body shows",
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -199,33 +205,8 @@ class _symptompsState extends State<select_symptomps> {
                         // padding: const EdgeInsets.all(),
                         color: Colors.white12,
                         // height: 100,
-                        width: double.infinity,
+                        width: 350,
                         child: Column(children: <Widget>[
-                          Neumorphic(
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.concave,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(10)),
-                                  depth: 100,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.white),
-                              child: Text(
-                                "--  Symptom 1 *  --",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    backgroundColor: Colors.cyan,
-                                    shadows: [
-                                      Shadow(
-                                          offset: Offset(3, 3),
-                                          color: Colors.black,
-                                          blurRadius: 10),
-                                    ],
-                                    color: Colors.grey.shade300),
-                              )),
-                          SizedBox(height: 10),
                           Neumorphic(
                               style: NeumorphicStyle(
                                   shape: NeumorphicShape.concave,
@@ -233,6 +214,7 @@ class _symptompsState extends State<select_symptomps> {
                                       BorderRadius.circular(20)),
                                   depth: 10,
                                   lightSource: LightSource.topRight,
+                                  shadowDarkColor: Colors.teal,
                                   color: Colors.white),
                               child: DropDownField(
                                 onValueChanged: (dynamic value) {
@@ -242,53 +224,23 @@ class _symptompsState extends State<select_symptomps> {
                                 required: false,
                                 icon: Icon(
                                   IconData(0xe41c, fontFamily: 'MaterialIcons'),
-                                  color: Colors.cyan,
+                                  color: Colors.teal,
                                 ),
                                 hintText: 'Choose a Symptom',
-                                labelText: 'SYMPTOM 1',
+                                labelText: 'SYMPTOM 1 *',
                                 items: symptomps,
                               ))
                         ]),
                       ),
                       SizedBox(
-                          height: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.teal,
-                          )),
+                        height: 50,
+                      ),
                       Container(
                         // padding: const EdgeInsets.all(),
                         color: Colors.white12,
                         // height: 100,
-                        width: double.infinity,
+                        width: 350,
                         child: Column(children: <Widget>[
-                          Neumorphic(
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.concave,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(10)),
-                                  depth: 100,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.white),
-                              child: Text(
-                                "--  Symptom 2 *  --",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    backgroundColor: Colors.cyan,
-                                    shadows: [
-                                      Shadow(
-                                          offset: Offset(3, 3),
-                                          color: Colors.black,
-                                          blurRadius: 10),
-                                    ],
-                                    color: Colors.grey.shade300),
-                              )),
-                          SizedBox(
-                            height: 20,
-                          ),
                           Neumorphic(
                               style: NeumorphicStyle(
                                   shape: NeumorphicShape.concave,
@@ -296,6 +248,7 @@ class _symptompsState extends State<select_symptomps> {
                                       BorderRadius.circular(20)),
                                   depth: 10,
                                   lightSource: LightSource.topRight,
+                                  shadowDarkColor: Colors.teal,
                                   color: Colors.white),
                               child: DropDownField(
                                 onValueChanged: (dynamic value) {
@@ -305,51 +258,23 @@ class _symptompsState extends State<select_symptomps> {
                                 required: false,
                                 icon: Icon(
                                   IconData(0xe41c, fontFamily: 'MaterialIcons'),
-                                  color: Colors.cyan,
+                                  color: Colors.teal,
                                 ),
                                 hintText: 'Choose a Symptom',
-                                labelText: 'SYMPTOM 2',
+                                labelText: 'SYMPTOM 2 *',
                                 items: symptomps,
                               ))
                         ]),
                       ),
                       SizedBox(
-                          height: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.teal,
-                          )),
+                        height: 50,
+                      ),
                       Container(
                         // padding: const EdgeInsets.all(),
                         color: Colors.white12,
                         // height: 100,
-                        width: double.infinity,
+                        width: 350,
                         child: Column(children: <Widget>[
-                          Neumorphic(
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.concave,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(10)),
-                                  depth: 100,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.white),
-                              child: Text(
-                                "--  Symptom 3    --",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    backgroundColor: Colors.cyan,
-                                    shadows: [
-                                      Shadow(
-                                          offset: Offset(3, 3),
-                                          color: Colors.black,
-                                          blurRadius: 10),
-                                    ],
-                                    color: Colors.grey.shade300),
-                              )),
-                          SizedBox(height: 20),
                           Neumorphic(
                               style: NeumorphicStyle(
                                   shape: NeumorphicShape.concave,
@@ -357,6 +282,7 @@ class _symptompsState extends State<select_symptomps> {
                                       BorderRadius.circular(20)),
                                   depth: 10,
                                   lightSource: LightSource.topRight,
+                                  shadowDarkColor: Colors.teal,
                                   color: Colors.white),
                               child: DropDownField(
                                 onValueChanged: (dynamic value) {
@@ -367,7 +293,7 @@ class _symptompsState extends State<select_symptomps> {
                                 strict: true,
                                 icon: Icon(
                                   IconData(0xe41c, fontFamily: 'MaterialIcons'),
-                                  color: Colors.cyan,
+                                  color: Colors.teal,
                                 ),
                                 hintText: 'Choose a Symptom',
                                 labelText: 'SYMPTOM 3',
@@ -376,42 +302,14 @@ class _symptompsState extends State<select_symptomps> {
                         ]),
                       ),
                       SizedBox(
-                          height: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.teal,
-                          )),
+                        height: 50,
+                      ),
                       Container(
                         // padding: const EdgeInsets.all(),
                         color: Colors.white12,
                         // height: 100,
-                        width: double.infinity,
+                        width: 350,
                         child: Column(children: <Widget>[
-                          Neumorphic(
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.concave,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(10)),
-                                  depth: 100,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.white),
-                              child: Text(
-                                "--  Symptom 4    --",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    backgroundColor: Colors.cyan,
-                                    shadows: [
-                                      Shadow(
-                                          offset: Offset(3, 3),
-                                          color: Colors.black,
-                                          blurRadius: 10),
-                                    ],
-                                    color: Colors.grey.shade300),
-                              )),
-                          SizedBox(height: 20),
                           Neumorphic(
                               style: NeumorphicStyle(
                                   shape: NeumorphicShape.concave,
@@ -419,6 +317,7 @@ class _symptompsState extends State<select_symptomps> {
                                       BorderRadius.circular(20)),
                                   depth: 10,
                                   lightSource: LightSource.topRight,
+                                  shadowDarkColor: Colors.teal,
                                   color: Colors.white),
                               child: DropDownField(
                                 onValueChanged: (dynamic value) {
@@ -428,7 +327,7 @@ class _symptompsState extends State<select_symptomps> {
                                 required: false,
                                 icon: Icon(
                                   IconData(0xe41c, fontFamily: 'MaterialIcons'),
-                                  color: Colors.cyan,
+                                  color: Colors.teal,
                                 ),
                                 hintText: 'Choose a Symptom',
                                 labelText: 'SYMPTOM 4',
@@ -437,42 +336,14 @@ class _symptompsState extends State<select_symptomps> {
                         ]),
                       ),
                       SizedBox(
-                          height: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.teal,
-                          )),
+                        height: 50,
+                      ),
                       Container(
                         // padding: const EdgeInsets.all(),
                         color: Colors.white12,
                         // height: 100,
-                        width: double.infinity,
+                        width: 350,
                         child: Column(children: <Widget>[
-                          Neumorphic(
-                              style: NeumorphicStyle(
-                                  shape: NeumorphicShape.concave,
-                                  boxShape: NeumorphicBoxShape.roundRect(
-                                      BorderRadius.circular(10)),
-                                  depth: 100,
-                                  lightSource: LightSource.topLeft,
-                                  color: Colors.white),
-                              child: Text(
-                                "--  Symptom 5    --",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    backgroundColor: Colors.cyan,
-                                    shadows: [
-                                      Shadow(
-                                          offset: Offset(3, 3),
-                                          color: Colors.black,
-                                          blurRadius: 10),
-                                    ],
-                                    color: Colors.grey.shade300),
-                              )),
-                          SizedBox(height: 20),
                           Neumorphic(
                               style: NeumorphicStyle(
                                   shape: NeumorphicShape.concave,
@@ -480,6 +351,7 @@ class _symptompsState extends State<select_symptomps> {
                                       BorderRadius.circular(20)),
                                   depth: 10,
                                   lightSource: LightSource.topRight,
+                                  shadowDarkColor: Colors.teal,
                                   color: Colors.white),
                               child: DropDownField(
                                 onValueChanged: (dynamic value) {
@@ -489,7 +361,7 @@ class _symptompsState extends State<select_symptomps> {
                                 required: false,
                                 icon: Icon(
                                   IconData(0xe41c, fontFamily: 'MaterialIcons'),
-                                  color: Colors.cyan,
+                                  color: Colors.teal,
                                 ),
                                 hintText: 'Choose a Symptom',
                                 labelText: 'SYMPTOM 5',
@@ -498,11 +370,8 @@ class _symptompsState extends State<select_symptomps> {
                         ]),
                       ),
                       SizedBox(
-                          height: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.teal,
-                          )),
+                        height: 50,
+                      ),
                       Text(
                           " Note that ,(*) are mandatory means 'symptom 1' and 'symptom 2' can't be null",
                           style: TextStyle(
@@ -512,7 +381,7 @@ class _symptompsState extends State<select_symptomps> {
                       SizedBox(height: 100),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.cyan, // background
+                            primary: Colors.teal, // background
                             onPrimary: Colors.white),
                         onPressed: () {
                           print(

@@ -1,7 +1,11 @@
 import 'package:atamsahay/main.dart';
+
+import 'package:atamsahay/provider/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'signup_login.dart';
 
 class MyApp extends StatelessWidget {
@@ -94,17 +98,41 @@ class MyHomePage extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                                onPrimary: Colors.black,
-                                minimumSize: Size(double.infinity, 50),
-                              ),
-                              icon: FaIcon(FontAwesomeIcons.google,
-                                  color: Colors.red),
-                              label: Text('  Sign Up with Google'),
-                              onPressed: () {},
-                            ),
+                            ChangeNotifierProvider(
+                                create: (context) => GoogleSignInProvider(),
+                                child: StreamBuilder(
+                                    stream: FirebaseAuth.instance
+                                        .authStateChanges(),
+                                    builder: (context, snapshot) {
+                                      final provider =
+                                          Provider.of<GoogleSignInProvider>(
+                                              context);
+
+                                      if (provider.isSigningIn) {
+                                        return buildloading();
+                                      } else if (snapshot.hasData) {
+                                        HomePage();
+                                      } else {
+                                        return ElevatedButton.icon(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.white,
+                                            onPrimary: Colors.black,
+                                            minimumSize:
+                                                Size(double.infinity, 50),
+                                          ),
+                                          icon: FaIcon(FontAwesomeIcons.google,
+                                              color: Colors.red),
+                                          label: Text('  Sign Up with Google'),
+                                          onPressed: () {
+                                            final provider = Provider.of<
+                                                    GoogleSignInProvider>(
+                                                context,
+                                                listen: false);
+                                            provider.login();
+                                          },
+                                        );
+                                      }
+                                    })),
                             Padding(
                                 padding: EdgeInsets.only(top: 10, left: 20),
                                 child: Text(
@@ -153,4 +181,9 @@ class MyHomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildloading() => Stack(
+        fit: StackFit.expand,
+        children: [Center(child: CircularProgressIndicator())],
+      );
 }

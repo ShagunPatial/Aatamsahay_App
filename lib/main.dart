@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         ),
         elevation: 20,
         toolbarHeight: 170,
-        backgroundColor: Colors.teal[300],
+        backgroundColor: Colors.teal[500],
         shadowColor: Colors.teal[250],
         actions: <Widget>[
           IconButton(
@@ -140,17 +140,17 @@ class HomePage extends StatelessWidget {
                     .neumorphic(curve: VxCurve.convex)
                     .makeCentered(), */
                   SizedBox(
-                    height: 90,
+                    height: 100,
                   ),
                   Container(
                       height: 200,
                       width: 300,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        gradient: LinearGradient(colors: <Color>[
-                          Colors.teal[200],
-                          Colors.teal[700]
-                        ]),
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: <Color>[Colors.grey[300], Colors.white]),
                         boxShadow: [
                           BoxShadow(
                               offset: Offset(10, 10),
@@ -171,22 +171,22 @@ class HomePage extends StatelessWidget {
                               fontSize: 60,
                               shadows: [
                                 Shadow(
-                                    offset: Offset(3, 3),
+                                    offset: Offset(2, 2),
                                     color: Colors.black,
-                                    blurRadius: 10),
+                                    blurRadius: 5),
                                 Shadow(
-                                    offset: Offset(-3, -3),
+                                    offset: Offset(-2, -2),
                                     color: Colors.white.withOpacity(0.0),
-                                    blurRadius: 10)
+                                    blurRadius: 5)
                               ],
-                              color: Colors.grey.shade300),
+                              color: Colors.teal),
                         ),
                         Padding(
                             padding: const EdgeInsets.fromLTRB(90, 0, 90, 0),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white, // background
-                                  onPrimary: Colors.teal, // foreground
+                                  primary: Colors.teal, // background
+                                  onPrimary: Colors.white, // foreground
                                 ),
                                 onPressed: () {
                                   Navigator.push(context,
