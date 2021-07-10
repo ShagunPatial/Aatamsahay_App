@@ -6,6 +6,7 @@ import './main_drawer.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import './screens/loginpage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +28,8 @@ class HomePage extends StatelessWidget {
           "Hi,  User ",
           style: TextStyle(fontSize: 25),
         ),
-        elevation: 20,
-        toolbarHeight: 170,
+        elevation: 10,
+        toolbarHeight: 150,
         backgroundColor: Colors.teal[500],
         shadowColor: Colors.teal[250],
         actions: <Widget>[
@@ -48,9 +49,9 @@ class HomePage extends StatelessWidget {
           )
         ],
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(50),
-          ),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(200),
+              bottomRight: Radius.circular(700)),
         ),
       ),
       drawer: MainDrawer(),
@@ -66,7 +67,7 @@ class HomePage extends StatelessWidget {
                       decoration: new BoxDecoration(
                           //  shape: BoxShape.circle,
                           ),
-                      height: 200,
+                      height: 220,
                       width: 300,
                       child: Neumorphic(
                         style: NeumorphicStyle(
@@ -86,7 +87,7 @@ class HomePage extends StatelessWidget {
                                 children: <Widget>[
                                   Padding(
                                       padding: const EdgeInsets.fromLTRB(
-                                          40, 17, 50, 30),
+                                          40, 25, 50, 20),
                                       child: Text('Tip of the day',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -110,10 +111,12 @@ class HomePage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(40, 10, 40, 10),
                                   child: Text(
-                                      "\"xxxx xxxx xxxxx x xxx\n xxxxxxxxxx xxxx\n xxxxxxxxx \" \n           ~ xxxxx ,xxxxx",
-                                      style: TextStyle(
-                                          fontSize: 21,
-                                          color: Colors.teal[300])))
+                                    "\"To keep the body in good health is a duty...otherwise we shall not able to keep our mind strong and clear\" \n                 ~ BUDDHA",
+                                    style: GoogleFonts.dancingScript(
+                                        fontSize: 20,
+                                        color: Colors.teal,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ],
                           ),
                         ),

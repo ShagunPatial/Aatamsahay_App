@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/prec_list.dart';
-import 'screens/yoga_asanas.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 var dis_index = {
   '(vertigo) Paroymsal  Positional Vertigo': 10,
@@ -220,57 +219,91 @@ var dic_prec = {
   41: ['Cover Mouth', 'Consult Doctor', 'Medication', 'Rest']
 };
 
-class precaution extends StatefulWidget {
-  final String dis;
-  const precaution({Key key, @required this.dis}) : super(key: key);
-
-  @override
-  _precautionState createState() => _precautionState();
+// takes dis name and return its index
+int find_index(String s) {
+  return dis_index[s];
 }
 
-class _precautionState extends State<precaution> {
+// takes dis name and return its precautions length
+int findpreclen(String s) {
+  int len;
+  len = dic_prec[dis_index[s]].length;
+  return len;
+}
+
+class prec_list extends StatefulWidget {
+  String disease;
+  prec_list({Key key, @required this.disease}) : super(key: key);
+
+  @override
+  _prec_listState createState() => _prec_listState();
+}
+
+class _prec_listState extends State<prec_list> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        initialIndex: 0,
-        child: SafeArea(
-          child: Scaffold(
-              appBar: AppBar(
-                  backgroundColor: Colors.teal,
-                  title: Expanded(
-                      child: Column(children: <Widget>[
-                    Text(
-                      "${widget.dis}",
-                      style: GoogleFonts.lobster(
-                          fontSize: 25,
-                          //color: Colors.green,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+    int prec_len = findpreclen(widget.disease);
+    int index_of_dis = find_index(widget.disease);
+    return SafeArea(
+        child: Scaffold(
+            body: Container(
+                height: double.infinity,
+                width: double.infinity,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
+                        child: Text(
+                          "Precautions needs to be taken",
+                          style: GoogleFonts.lobster(
+                              fontSize: 40,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                      height: 20,
                     ),
-                  ])),
-                  toolbarHeight: 170,
-                  bottom: TabBar(
-                    labelColor: Colors.white,
-                    indicatorColor: Colors.white,
-                    tabs: <Widget>[
-                      Tab(
-                        text: "Precautions",
-                      ),
-                      Tab(text: "Yoga Asanas/ Exercises")
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(50),
-                    ),
-                  )),
-              body: TabBarView(
-                children: <Widget>[
-                  prec_list(disease: widget.dis),
-                  yoga_asanas(dise: widget.dis),
-                ],
-              )),
-        ));
+                    for (int ind = 0; ind < prec_len; ind++)
+                      get_prec(ind, index_of_dis)
+                  ],
+                ))));
   }
+}
+
+Widget get_prec(int ind, int index) {
+  return Container(
+    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+    color: Colors.white12,
+    height: 100,
+    width: 400,
+    child: Neumorphic(
+      style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+          depth: 10,
+          lightSource: LightSource.topRight,
+          shadowDarkColor: Colors.green,
+          color: Colors.white),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            Icons.medical_services,
+            size: 35,
+            color: Colors.green,
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            "${dic_prec[index][ind]}",
+            style: GoogleFonts.ubuntuCondensed(
+                fontSize: 20, color: Colors.teal, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+    ),
+  );
 }
