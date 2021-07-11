@@ -62,7 +62,7 @@ var dic_yog = {
   13: ['Viparita_karani', 'Dhanurasana'],
   14: ['nan', 'nan'],
   15: ['Uttanasana', 'Viparita_karani'],
-  16: ['pranayam', 'Shataram'], //1
+  16: ['pranayam', 'nan'],
   17: ['Janu_sirsasana', 'Salamba_sarvangasana'],
   18: ['pranayam', 'Uttanasana'], //1
   19: ['nan', 'nan'],

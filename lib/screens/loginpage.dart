@@ -1,6 +1,7 @@
 import 'package:atamsahay/main.dart';
 
 import 'package:atamsahay/provider/google_sign_in.dart';
+import 'package:atamsahay/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,12 +14,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: myHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class myHomePage extends StatefulWidget {
+  const myHomePage({Key key}) : super(key: key);
+
+  @override
+  _myHomePageState createState() => _myHomePageState();
+}
+
+class _myHomePageState extends State<myHomePage> {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -151,8 +161,18 @@ class MyHomePage extends StatelessWidget {
                                 minimumSize: Size(double.infinity, 50),
                               ),
                               icon: FaIcon(Icons.email, color: Colors.blue),
-                              label: Text('  Login with Email'),
-                              onPressed: () {},
+                              label: Text('  Login in Anonymously '),
+                              onPressed: () async {
+                                dynamic result = await _auth.signInAnon();
+                                if (result == null) {
+                                  print("error in sign in");
+                                } else {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return HomePage();
+                                  }));
+                                }
+                              },
                             ),
                             SizedBox(height: 10),
                             ElevatedButton.icon(
