@@ -1,12 +1,32 @@
 import 'package:atamsahay/screens/profile.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './screens/profile.dart';
 import './screens/history.dart';
 
-class MainDrawer extends StatelessWidget {
+class MainDrawer extends StatefulWidget {
+  User current_user;
+  MainDrawer({Key key, @required current_user}) : super(key: key);
+
+  @override
+  _MainDrawerState createState() => _MainDrawerState();
+}
+
+class _MainDrawerState extends State<MainDrawer> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  signOut() async {
+    _auth.signOut();
+
+    final googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
+    User user = widget.current_user;
     return Drawer(
         child: ListView(
       children: <Widget>[
@@ -33,10 +53,24 @@ class MainDrawer extends StatelessWidget {
                 ),
               ),
             ]))),
-        CustomListTile(Icons.person, 'Profile', profile()),
+        CustomListTile(Icons.person, 'Profile', profile(curr_us: user)),
         CustomListTile(Icons.history, 'History', history()),
-        CustomListTile(Icons.settings, 'Settings', profile()),
-        CustomListTile(Icons.logout, 'Logout', history()),
+        SizedBox(height: 20),
+        RaisedButton(
+            padding: EdgeInsets.only(left: 50, right: 50),
+            onPressed: signOut,
+            child: Text(
+              'Sign out',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            color: Colors.teal),
       ],
     ));
   }

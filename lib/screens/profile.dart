@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class profile extends StatefulWidget {
+  User curr_us;
+  profile({Key key, @required curr_us}) : super(key: key);
+
   @override
   _profileState createState() => _profileState();
 }
@@ -30,13 +34,17 @@ class _profileState extends State<profile> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  radius: 100,
-                  backgroundImage: AssetImage('images/profileimage.png'),
-                ),
+                    radius: 100,
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'images/profile.jpg',
+                      image: widget.curr_us.photoURL == null
+                          ? 'images/profile.jpg'
+                          : widget.curr_us.photoURL,
+                    )),
                 Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      " User ",
+                      " ${widget.curr_us.displayName} ",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30.0,
@@ -59,7 +67,7 @@ class _profileState extends State<profile> {
                       color: Colors.teal,
                     ),
                     title: Text(
-                      "abcs@gmail.com",
+                      "${widget.curr_us.email}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -73,7 +81,7 @@ class _profileState extends State<profile> {
                       color: Colors.teal,
                     ),
                     title: Text(
-                      "999xxxxxxx9",
+                      "${widget.curr_us.phoneNumber}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -87,7 +95,7 @@ class _profileState extends State<profile> {
                       color: Colors.teal,
                     ),
                     title: Text(
-                      "30",
+                      "--NA--",
                       style: TextStyle(fontSize: 20),
                     ),
                     subtitle: Text('Age'),

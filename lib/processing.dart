@@ -7,7 +7,6 @@ import 'package:connectivity/connectivity.dart';
 import 'dart:convert';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 var dis_desc = {
   '(vertigo) Paroymsal  Positional Vertigo':

@@ -219,6 +219,50 @@ var dic_prec = {
   41: ['Cover Mouth', 'Consult Doctor', 'Medication', 'Rest']
 };
 
+var allo_path = {
+  '(vertigo) Paroymsal  Positional Vertigo': ['Dramamine II', 'Meclizine'],
+  'AIDS': ['Abacavir', 'zidovudine'],
+  'Acne': ['minocycline', 'erythromycin'],
+  'Alcoholic hepatitis': ['oxandrin', 'propylthiouracil'],
+  'Allergy': ['Cetirizine ', 'Clemastine'],
+  'Arthritis': ['leflunomide', 'tofacitinib'],
+  'Bronchial Asthma': ['Dulera', 'Atrovent'],
+  'Cervical spondylosis': ['Ibuprofen', 'Aleve'],
+  'Chicken pox': ['Zovirax', 'Sitavig'],
+  'Chronic cholestasis': ['Ursodiol', 'nan'],
+  'Common Cold': ['diphenhydramine', 'naproxen'],
+  'Dengue': ['acetaminophen', 'nan'],
+  'Diabetes': ['Dapagliflozin', 'Glipizide'],
+  'Dimorphic hemmorhoids(piles)': ['Hydrocortisone', 'Benzocaine'],
+  'Drug Reaction': ['Penicillin', 'Benadryl'],
+  'Fungal infection': ['miconazole', 'fluconazole.'],
+  'GERD': ['Erythrocin', 'Antacids'],
+  'Gastroenteritis': ['Vibramycin', 'Zofran'],
+  'Heart attack': ['Statins', 'Warfarin'],
+  'Hepatitis B': ['Baraclude', 'Viread'],
+  'Hepatitis C': ['Zepatier', 'paritaprevir'],
+  'Hepatitis D': ['interferon alfa', 'nan'],
+  'Hepatitis E': ['Ribavirin', 'nan'],
+  'Hypertension': ['Bumetanide', 'Furosemide'],
+  'Hyperthyroidism': ['Tapazole', 'propylthiouracil'],
+  'Hypoglycemia': ['glucagon', 'diazoxide'],
+  'Hypothyroidism': ['Levo-T', ' Synthroid'],
+  'Impetigo': ['Dicloxacillin', 'Amoxicillin'],
+  'Jaundice': ['Chlorpromazine', 'Fusidic acid'],
+  'Malaria': ['Chloroquine', 'Mefloquine'],
+  'Migraine': ['acetaminophen', 'naproxen'],
+  'Osteoarthristis': ['diclofenac', 'Motrin'],
+  'Paralysis (brain hemorrhage)': ['mannitol', 'Ischaemic'],
+  'Peptic ulcer diseae': ['omeprazole', 'rabeprazole'],
+  'Pneumonia': ['Amoxil', 'Vancomycin'],
+  'Psoriasis': ['Humira', 'Cyltezo'],
+  'Tuberculosis': ['Rifampin', 'Pyrazinamide'],
+  'Typhoid': ['Ciprofloxacin', 'Azithromycin'],
+  'Urinary tract infection': ['Fosfomycin', 'Nitrofurantoin'],
+  'Varicose veins': ['Asclera', 'Sotradecol'],
+  'hepatitis A': ['Hepatitis A-Vaccine', 'nan']
+};
+
 // takes dis name and return its index
 int find_index(String s) {
   return dis_index[s];
@@ -249,27 +293,95 @@ class _prec_listState extends State<prec_list> {
             body: Container(
                 height: double.infinity,
                 width: double.infinity,
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                        padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
-                        child: Text(
-                          "Precautions needs to be taken",
-                          style: GoogleFonts.lobster(
-                              fontSize: 40,
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold),
-                        )),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    for (int ind = 0; ind < prec_len; ind++)
-                      get_prec(ind, index_of_dis)
-                  ],
-                ))));
+                child: SingleChildScrollView(
+                    child: Column(children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
+                          child: Text(
+                            "Common Allopathic Medication's for this disease",
+                            style: GoogleFonts.lobster(
+                                fontSize: 40,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      for (int ind = 0; ind < 2; ind++)
+                        allo_path[widget.disease][ind] != 'nan'
+                            ? get_allo(allo_path[widget.disease][ind])
+                            : null,
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(15, 25, 0, 10),
+                          child: Text(
+                            "Precautions needs to be taken",
+                            style: GoogleFonts.lobster(
+                                fontSize: 40,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold),
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      for (int ind = 0; ind < prec_len; ind++)
+                        get_prec(ind, index_of_dis)
+                    ],
+                  ),
+                ])))));
   }
 }
 
+// for allopathic medicines
+Widget get_allo(String medic) {
+  return Container(
+    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+    decoration: BoxDecoration(
+        image: DecorationImage(
+      image: AssetImage("images/allopathic_image.jpg"),
+      fit: BoxFit.cover,
+    )),
+    height: 100,
+    width: 400,
+    child: Neumorphic(
+      style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+          depth: 10,
+          lightSource: LightSource.topRight,
+          shadowDarkColor: Colors.green,
+          color: Colors.white),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            Icons.circle_notifications,
+            size: 35,
+            color: Colors.green,
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            "${medic}",
+            style: GoogleFonts.ubuntuCondensed(
+                fontSize: 20, color: Colors.teal, fontWeight: FontWeight.bold),
+          ),
+          //Image(image:"images/allopathic_image.jpg")
+        ],
+      ),
+    ),
+  );
+}
+
+// for precautions
 Widget get_prec(int ind, int index) {
   return Container(
     padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
