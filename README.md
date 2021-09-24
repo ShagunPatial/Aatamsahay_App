@@ -1,16 +1,22 @@
 # Aatmsahay
+## (Disease Prediction Application)
 
-A new Flutter project.
+### Screenshots of Flutter Application:
 
-## Getting Started
+#### Home Screen:
 
-This project is a starting point for a Flutter application.
+<img src = "Scrnshots/Screenshot_20210715-184431.png" width="200">
 
-A few resources to get you started if this is your first Flutter project:
+#### Symptoms Selection:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src = "Scrnshots/Screenshot_20210715-002449.png" width="200">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Disease Prediction:
+
+<img src = "Scrnshots/Screenshot_20210715-184512.png" width="200">          <img src = "Scrnshots/Screenshot_20210715-184544.png" width="200">
+
+#### Precautions & Yoga/Exercise for the Predicted disease:
+
+<img src = "Scrnshots/Screenshot_20210715-184558.png" width="200">          <img src = "Scrnshots/Screenshot_20210715-184615.png" width="200">
+
+ 
